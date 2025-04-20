@@ -2,8 +2,6 @@ package com.ferchoo.cajasimulapro.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,14 +32,14 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioRepository.findAll());
     }
 
-    @PostMapping
-    public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
-        usuario.setPassword("123456"); // Encriptar despues
-        return ResponseEntity.ok(usuarioRepository.save(usuario));
-    }
+    // @PostMapping
+    // public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario) {
+    // usuario.setPassword("123456"); // Encriptar despues
+    // return ResponseEntity.ok(usuarioRepository.save(usuario));
+    // }
 
     @PostMapping
-    public ResponseEntity<Usuario> crearUsuario(@Valid @RequestBody Usuario usuario, BindingResult result) {
+    public ResponseEntity<Usuario> crearUsuario(@RequestBody Usuario usuario, BindingResult result) {
         if (result.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Campos no validos");
         }

@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ferchoo.cajasimulapro.config.JwtUtils;
 import com.ferchoo.cajasimulapro.dto.LoginRequest;
 
-
 // import io.rocketbase.commons.dto.authentication.LoginRequest;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired
-    private JwtUtils jwtUtils;
+
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtUtils jwtUtils;
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest request) {
